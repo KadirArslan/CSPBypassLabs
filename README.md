@@ -52,7 +52,10 @@ Same as the previous level, here you can use callback functions.
 Given this CSP header:
 Content-Security-Policy: frame-src https://example.com
 The following <iframe> is blocked and won't load:
+```sh
 <iframe src="https://not-example.com/"></iframe>
+```
+
 Call the allowed page in Frame.
 
 ##### Useful Resources
