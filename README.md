@@ -16,7 +16,7 @@ Content Security Policy is a computer security standard that was introduced to p
 ## Solutions
 Check https://csp-evaluator.withgoogle.com before solutions.
 #### Level 1
-As a result of the 'unsafe-inline' directive used, if the input entered contains a script tag, the javascript is triggered. Example payload : 
+As a result of the 'unsafe-inline' directive used, if the input entered contains a script tag, the javascript is triggered. Example payload 
 
 ```sh
 <script>alert(1)</script>
@@ -34,7 +34,7 @@ data: URI in script-src allows the execution of unsafe scripts.
 ```
 
 ### Level 4
-We see the base64 encode form of current time's as the nonce value in response as the CSP rule. Example payload : 
+We see the base64 encode form of current time's as the nonce value in response as the CSP rule. Example payload
 ```sh
 <script nonce="MjcuMDMuMjAyMS8yMjoxNw==">alert(1)</script>
 ```
@@ -62,5 +62,6 @@ Call the allowed page in Frame.
 
 - https://www.netsparker.com/blog/web-security/content-security-policy/
 - https://brutelogic.com.br/blog/csp-bypass-guidelines/
+- https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
 
 
