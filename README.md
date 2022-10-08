@@ -5,6 +5,8 @@ This project contains sample test cases for bypassing incorrectly&incompletely c
 ## What is CSP
 Content Security Policy is a computer security standard that was introduced to prevent cross-site scripting, click-through, and other code injection attacks resulting from the execution of malicious content in the context of a trusted web page. 
 
+This project created with PHP. For the run: https://www.geeksforgeeks.org/how-to-run-php-programs/#:~:text=If%20you%20want%20to%20run,Your%20program%20will%20run.
+
 ## Challenges
 - unsafe-inline
 - External Resource
